@@ -22,6 +22,7 @@ if($_SESSION['oauth_token'] == $_GET['oauth_token'] and $_GET['oauth_verifier'])
         $user_connection = new TwitterOAuth(Consumer_Key, Consumer_Secret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
         $user_info = $user_connection->get('account/verify_credentials');
 
+
         //ユーザー情報の取得
         $id = $user_info->id;
         $name = $user_info->name;
@@ -37,10 +38,10 @@ if($_SESSION['oauth_token'] == $_GET['oauth_token'] and $_GET['oauth_verifier'])
         $_SESSION['oauth_token'] = $access_token['oauth_token'];
         $_SESSION['oauth_token_secret'] = $access_token['oauth_token_secret'];
 
-        header('Location: pre_login.php' );
+        header('Location: login_home.php' );
         exit();
     }else{
-        header('Location: pre_login.php' );
+        header('Location: twitter_pre_login.php' );
         exit();
     }
 ?>

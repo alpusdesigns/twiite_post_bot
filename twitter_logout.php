@@ -1,7 +1,8 @@
 <!--
-    logout.php  
-    TwitterのログアウトをするPHPファイル
+    twitter_logout.php  
+    TwitterのログアウトPHPファイル
 -->
+
 
 <?php 
     session_start();
@@ -33,12 +34,18 @@
     <div id="main">
         <div class="inner">
             <?php
+        
+                //Twitterセッションを破棄する
+                unset($_SESSION['access_token'] );
+                unset($_SESSION['id'] );
+                unset($_SESSION['name'] );
+                unset($_SESSION['screen_name'] );
+                unset($_SESSION['profile_image_url_https'] );
+                unset($_SESSION['oauth_token'] );
+                unset($_SESSION['oauth_token_secret'] );   
 
-                //セッションを破棄する
-                session_destroy();
-
-                echo "<h2>ログアウトしました。</h2>";
-                echo "<a href='login.php'>ログインページへ</p>";
+                echo "<h2>Twitterのログアウトをしました。</h2>";
+                echo "<a href='twitter_pre_login.php'>ログインページへ</p>";
                 echo "<p><a href='index.php'>ホームへ戻る</a></p>";
 
             ?>

@@ -1,11 +1,10 @@
 <!--
-    logout.php  
-    TwitterのログアウトをするPHPファイル
+    Twitter_pre_login.php  
+    Twitterのログイン前のPHPファイル
 -->
 
 <?php 
     session_start();
-    header('Content-type: text/html; charset=utf-8');
 ?>
 
 <html lang="ja">
@@ -33,14 +32,18 @@
     <div id="main">
         <div class="inner">
             <?php
+                header('Content-type: text/html; charset=utf-8');
 
-                //セッションを破棄する
-                session_destroy();
-
-                echo "<h2>ログアウトしました。</h2>";
-                echo "<a href='login.php'>ログインページへ</p>";
-                echo "<p><a href='index.php'>ホームへ戻る</a></p>";
-
+                if(!isset($_SESSION['access_token'])){
+                    echo "<a href='twitter_login.php' class='login_link_btn'>Twitterでログインする</a>";
+                }else{
+                    echo '<div id="pre_login_state">';
+                    echo "<p><img src=" .$_SESSION['profile_image_url_https'] . "></p>";
+                    echo "<p>" .$_SESSION['name'] . "さん</p>";
+                    echo "<p><a href='twitter_logout.php'>ログアウト</a></p>";
+                    echo "<p><a href='index.php'>ホームへ戻る</a></p>";
+                    echo "</div>";
+                }
             ?>
         </div>
     </div>
@@ -53,11 +56,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-

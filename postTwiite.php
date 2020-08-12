@@ -2,7 +2,6 @@
     postTwiite.php  
     質問と解答をつぶやく処理をまとめたPHPファイル
 -->
-
 <?php
     session_start();
 
@@ -32,7 +31,7 @@
     $TweetConnection = new TwitterOAuth($consumer_key, $consumer_secret, $access_token,$access_secret);
 
     //質問、画像込みでつぶやく(固定画像)
-    $media_id = $TweetConnection->upload('media/upload', ['media' => './img/sample1.jpg']);
+    $media_id = $TweetConnection->upload('media/upload', ['media' => './img/create.jpg']);
 
     $param = ['status' => $question, 'media_ids' => $media_id->media_id_string];
 

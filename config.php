@@ -2,6 +2,7 @@
     config.php  
     コンシューマキー等情報を記録しておくPHPファイル
 -->
+
 <?php
 
     //コンシューマキー(APIキー)
@@ -14,6 +15,8 @@
     $callback_url = '登録したTwitterAPIのコールバックURLを入れる';
 
 ?>
+
+
 
 
 

@@ -24,12 +24,11 @@
             <!-- ログイン情報を表示する -->
             <div id="login_state" class="floatR">
             <?php
-                if(!isset($_SESSION['access_token'])){
-                    echo "<a href='pre_login.php'>ログイン</a>";
+                if(!isset($_SESSION['login_state'])){
+                    echo "<a href='login.php'>ログイン</a>";
                 }else{
                     echo '<div style="display:flex; line-height: 50px; margin-top: 10px; width: 350px;">';
-                    echo "<p><img src=" .$_SESSION['profile_image_url_https'] . "></p>"; 
-                    echo "<p>" .$_SESSION['name'] . "さん</p>";
+                    echo "<a class='login_state_link' href='login_home.php'>" .$_SESSION['account'] . "さん</a>";
                     echo "<p><a href='logout.php'>ログアウト</a></p>";
                     echo "</div>";
                 }
@@ -51,14 +50,24 @@
                 </p>
             </div>
             
-            <a href="edit.php" class="link_btn"> 早速試してみる</a>
+            <div class="main_link_frame">
+                <a href="edit.php" class="link_btn"> 早速試してみる</a>
+
+                <?php
+                if(!isset($_SESSION['login_state'])){
+                    echo "<a href='regist_mail_form.php' class='link_btn'> 会員登録</a>";
+                }else{
+                    echo '<div></div>';
+                }
+                ?>
+            </div>
         </div>
     </div>
     
 
     <div id="footer">
         <div class="inner">
-            <p>&copy; 社名 2020</p>
+           <p>&copy;  2020</p>
         </div>
     </div>
 
